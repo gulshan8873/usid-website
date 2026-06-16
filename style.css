@@ -240,7 +240,7 @@ a {
   width: 300%;
   height: 100%;
   min-height: inherit;
-  animation: automationSlider 15s infinite;
+  animation: automationSlider 12s infinite;
 }
 
 .slide {

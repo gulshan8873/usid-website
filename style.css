@@ -225,97 +225,135 @@ a {
   font-weight: 600;
 }
 
-.hero-panel {
+.hero-slider {
   position: relative;
   min-height: 520px;
-  padding: 26px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 8px;
-  background: rgba(7, 18, 36, 0.7);
   box-shadow: 0 35px 80px rgba(0, 0, 0, 0.32);
+  overflow: hidden;
+  background: #071224;
 }
 
-.panel-top {
+.slider-track {
   display: flex;
-  gap: 10px;
+  width: 300%;
+  height: 100%;
+  min-height: inherit;
+  animation: automationSlider 15s infinite;
 }
 
-.panel-top span {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 24px rgba(16, 185, 129, 0.75);
-}
-
-.panel-top span:nth-child(2) {
-  background: var(--amber);
-}
-
-.panel-top span:nth-child(3) {
-  background: var(--cyan);
-}
-
-.monitor {
+.slide {
   position: relative;
-  height: 210px;
-  margin-top: 28px;
-  border: 1px solid rgba(8, 182, 217, 0.3);
-  border-radius: 8px;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.85), rgba(12, 32, 61, 0.92));
+  flex: 0 0 33.333%;
+  min-height: inherit;
+  margin: 0;
   overflow: hidden;
 }
 
-.monitor::before {
+.slide::after {
   content: "";
   position: absolute;
-  inset: 18px;
-  background-image:
-    linear-gradient(rgba(8, 182, 217, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(8, 182, 217, 0.12) 1px, transparent 1px);
-  background-size: 28px 28px;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7, 18, 36, 0.02), rgba(7, 18, 36, 0.78)),
+    linear-gradient(90deg, rgba(7, 18, 36, 0.34), transparent 58%);
 }
 
-.signal {
+.slide img {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  display: block;
+}
+
+.slide figcaption {
   position: absolute;
-  right: 22px;
-  left: 22px;
+  right: 24px;
+  bottom: 24px;
+  left: 24px;
+  z-index: 1;
+  display: grid;
+  gap: 8px;
+  max-width: 420px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(7, 18, 36, 0.72);
+  backdrop-filter: blur(12px);
+}
+
+.slide figcaption span {
+  color: var(--cyan);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.slide figcaption strong {
+  color: #fff;
+  font-size: clamp(1rem, 1.6vw, 1.28rem);
+  line-height: 1.35;
+}
+
+.slider-dots {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 28px);
+  gap: 8px;
+}
+
+.slider-dots span {
   height: 4px;
   border-radius: 999px;
+  background: rgba(255, 255, 255, 0.45);
+  animation: sliderDot 15s infinite;
 }
 
-.signal-one {
-  top: 56px;
-  background: var(--cyan);
-  box-shadow: 0 0 18px rgba(8, 182, 217, 0.7);
+.slider-dots span:nth-child(2) {
+  animation-delay: 5s;
 }
 
-.signal-two {
-  top: 104px;
-  width: 62%;
-  background: var(--green);
-  box-shadow: 0 0 18px rgba(16, 185, 129, 0.65);
+.slider-dots span:nth-child(3) {
+  animation-delay: 10s;
 }
 
-.signal-three {
-  top: 152px;
-  width: 78%;
-  background: var(--amber);
-  box-shadow: 0 0 18px rgba(245, 158, 11, 0.65);
+@keyframes automationSlider {
+  0%,
+  28% {
+    transform: translateX(0);
+  }
+
+  33%,
+  61% {
+    transform: translateX(-33.333%);
+  }
+
+  66%,
+  94% {
+    transform: translateX(-66.666%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
 
-.panel-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 24px;
-}
+@keyframes sliderDot {
+  0%,
+  28% {
+    background: var(--amber);
+  }
 
-.panel-grid span {
-  min-height: 94px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 8px;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+  33%,
+  100% {
+    background: rgba(255, 255, 255, 0.45);
+  }
 }
 
 .section {
@@ -468,7 +506,7 @@ footer p {
     grid-template-columns: 1fr;
   }
 
-  .hero-panel {
+  .hero-slider {
     min-height: 420px;
   }
 
@@ -500,17 +538,12 @@ footer p {
   }
 
   .stats,
-  .service-grid,
-  .panel-grid {
+  .service-grid {
     grid-template-columns: 1fr;
   }
 
-  .hero-panel {
+  .hero-slider {
     min-height: 360px;
-  }
-
-  .panel-grid span {
-    min-height: 58px;
   }
 }
 
@@ -531,5 +564,17 @@ footer p {
 
   .btn {
     width: 100%;
+  }
+
+  .slide figcaption {
+    right: 16px;
+    bottom: 16px;
+    left: 16px;
+    padding: 14px;
+  }
+
+  .slider-dots {
+    right: 16px;
+    top: 16px;
   }
 }

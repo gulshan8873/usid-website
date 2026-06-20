@@ -49,19 +49,17 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 12px;
+  min-width: 0;
   text-decoration: none;
 }
 
-.brand-mark {
-  display: grid;
-  width: 44px;
-  height: 44px;
-  place-items: center;
+.brand-logo {
+  display: block;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  object-fit: contain;
   border-radius: 8px;
-  background: linear-gradient(135deg, var(--blue), var(--cyan));
-  color: #fff;
-  font-weight: 800;
-  box-shadow: 0 12px 28px rgba(21, 86, 168, 0.28);
 }
 
 .brand strong,
@@ -549,7 +547,13 @@ footer p {
 
 @media (max-width: 460px) {
   .brand {
-    align-items: flex-start;
+    align-items: center;
+  }
+
+  .brand-logo {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
   }
 
   .nav-links a {

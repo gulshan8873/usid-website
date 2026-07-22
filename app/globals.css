@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 210 40% 98%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --primary: 38 92% 50%;
+  --primary-foreground: 222 47% 11%;
+  --secondary: 213 44% 94%;
+  --secondary-foreground: 222 47% 11%;
+  --muted: 214 32% 91%;
+  --muted-foreground: 216 15% 38%;
+  --accent: 190 94% 42%;
+  --accent-foreground: 0 0% 100%;
+  --border: 214 32% 86%;
+  --input: 214 32% 86%;
+  --ring: 212 89% 42%;
+}
+
+.dark {
+  --background: 222 47% 7%;
+  --foreground: 210 40% 96%;
+  --card: 222 44% 10%;
+  --card-foreground: 210 40% 96%;
+  --primary: 38 92% 50%;
+  --primary-foreground: 222 47% 9%;
+  --secondary: 218 30% 17%;
+  --secondary-foreground: 210 40% 96%;
+  --muted: 218 30% 17%;
+  --muted-foreground: 215 20% 72%;
+  --accent: 190 94% 42%;
+  --accent-foreground: 0 0% 100%;
+  --border: 217 28% 22%;
+  --input: 217 28% 22%;
+  --ring: 190 94% 42%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted) / 0.32));
+  color: hsl(var(--foreground));
+}
+
+::selection {
+  background: hsl(var(--primary) / 0.32);
+}
+
+.section-shell {
+  padding: clamp(4rem, 8vw, 6.5rem) clamp(1.125rem, 5vw, 4.5rem);
+}
+
+.container-shell {
+  margin-inline: auto;
+  max-width: 1180px;
+}
+
+.eyebrow {
+  color: hsl(var(--accent));
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@keyframes slider {
+  0%,
+  28% {
+    transform: translateX(0);
+  }
+
+  33%,
+  61% {
+    transform: translateX(-33.333%);
+  }
+
+  66%,
+  94% {
+    transform: translateX(-66.666%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes dot {
+  0%,
+  28% {
+    background: hsl(var(--primary));
+  }
+
+  33%,
+  100% {
+    background: rgb(255 255 255 / 0.45);
+  }
+}

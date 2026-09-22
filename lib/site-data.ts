@@ -137,6 +137,6 @@ export const contactDetails = [
   { label: "Email", value: "usidautomation@gmail.com" },
   {
     label: "Location",
-    value: "Opposite PNB Bank, Kasna, Greater Noida, G.B. Nagar, UP - 201312",
+    value: "Shop No. -2, First floor, Opposite PNB Bank, Kasna, Greater Noida, G.B. Nagar, UP - 201312",
   },
 ];

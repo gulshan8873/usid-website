@@ -1,13 +1,13 @@
 "use client";
 
-import { ArrowRight, Layers3, MessageCircle } from "lucide-react";
+import { ArrowRight, Layers3 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 
 import { MotionReveal } from "@/components/motion-reveal";
 import { Button } from "@/components/ui/button";
-import { heroSlides, site, strengths } from "@/lib/site-data";
+import { automationBrands, heroSlides, strengths } from "@/lib/site-data";
 
 export function Hero() {
   const reduceMotion = useReducedMotion();
@@ -29,7 +29,7 @@ export function Hero() {
 
       <div className="container-shell grid items-center gap-10 lg:grid-cols-[1.04fr_0.96fr] lg:gap-16">
         <MotionReveal className="max-w-3xl">
-          <p className="eyebrow">Automation â€¢ Data â€¢ Intelligence</p>
+          <p className="eyebrow">Automation &bull; Data &bull; Intelligence</p>
           <h1 className="text-balance mt-3 text-4xl font-extrabold leading-[1.04] tracking-normal sm:text-5xl lg:text-6xl">
             Automation, Data & Industrial Intelligence
           </h1>
@@ -43,16 +43,6 @@ export function Hero() {
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button asChild>
-              <Link href={site.whatsapp}>
-                <MessageCircle className="size-4" />
-                Talk to an Expert
-              </Link>
-            </Button>
-            <Button
-              asChild
-              className="border-white/35 bg-white/8 text-white hover:bg-white/14"
-              variant="secondary"
-            >
               <Link href="#services">
                 View Services
                 <ArrowRight className="size-4" />
@@ -76,7 +66,7 @@ export function Hero() {
         </MotionReveal>
 
         <MotionReveal
-          className="relative min-h-[360px] overflow-hidden rounded-lg border border-white/18 bg-slate-950 shadow-[0_35px_80px_rgba(0,0,0,0.32)] sm:min-h-[460px] lg:min-h-[540px]"
+          className="relative min-h-[380px] overflow-hidden rounded-lg border border-white/18 bg-slate-950 shadow-[0_35px_80px_rgba(0,0,0,0.32)] sm:min-h-[480px] lg:min-h-[560px]"
           delay={0.12}
         >
           <motion.div
@@ -98,11 +88,21 @@ export function Hero() {
                   src={slide.image}
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,18,36,0.02),rgba(7,18,36,0.78)),linear-gradient(90deg,rgba(7,18,36,0.34),transparent_58%)]" />
-                <figcaption className="absolute inset-x-4 bottom-4 grid gap-2 rounded-lg border border-white/25 bg-slate-950/86 p-5 shadow-2xl backdrop-blur md:inset-x-6 md:bottom-6 md:p-6">
+                <figcaption className="absolute inset-x-4 bottom-20 grid gap-2 rounded-lg border border-white/25 bg-slate-950/86 p-5 shadow-2xl backdrop-blur md:inset-x-6 md:bottom-24 md:p-6">
                   <span className="eyebrow">{slide.label}</span>
                   <strong className="text-balance text-base leading-7 text-white sm:text-lg">
                     {slide.text}
                   </strong>
+                  <span className="mt-2 flex flex-wrap gap-2">
+                    {slide.tags.map((tag) => (
+                      <span
+                        className="rounded-lg border border-white/18 bg-white/10 px-2.5 py-1 text-xs font-extrabold uppercase tracking-normal text-blue-100"
+                        key={tag}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </span>
                 </figcaption>
               </figure>
             ))}
@@ -118,6 +118,26 @@ export function Hero() {
           </div>
           <div className="absolute left-5 top-5 z-10 rounded-lg border border-white/16 bg-white/10 p-3 backdrop-blur">
             <Layers3 className="size-5 text-cyan-300" />
+          </div>
+          <div className="absolute inset-x-0 bottom-0 z-10 border-t border-white/12 bg-slate-950/76 py-3 backdrop-blur">
+            <div className="flex overflow-hidden" aria-label="Automation brands and components">
+              {[0, 1].map((set) => (
+                <div
+                  aria-hidden={set === 1}
+                  className="flex min-w-full shrink-0 animate-brand-rail items-center gap-3 px-3"
+                  key={set}
+                >
+                  {automationBrands.map((brand) => (
+                    <span
+                      className="whitespace-nowrap rounded-lg border border-white/14 bg-white/8 px-4 py-2 text-xs font-extrabold uppercase tracking-normal text-blue-100"
+                      key={`${set}-${brand}`}
+                    >
+                      {brand}
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         </MotionReveal>
       </div>

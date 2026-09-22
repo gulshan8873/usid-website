@@ -1,13 +1,13 @@
 "use client";
 
-import { Menu, MessageCircle, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
-import { navItems, site } from "@/lib/site-data";
+import { navItems } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
@@ -53,12 +53,6 @@ export function Navbar() {
 
         <div className="hidden items-center gap-2 lg:flex">
           <ThemeToggle />
-          <Button asChild>
-            <Link href={site.whatsapp}>
-              <MessageCircle className="size-4" />
-              Talk to an Expert
-            </Link>
-          </Button>
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
@@ -96,12 +90,6 @@ export function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <Button asChild className="mt-1">
-              <Link href={site.whatsapp} onClick={() => setIsOpen(false)}>
-                <MessageCircle className="size-4" />
-                Talk to an Expert
-              </Link>
-            </Button>
           </nav>
         </div>
       </div>

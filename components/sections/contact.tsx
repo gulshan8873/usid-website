@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, MapPin, MessageCircle, Phone, UserRound } from "lucide-react";
+import { Building2, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import Link from "next/link";
 
 import { MotionReveal } from "@/components/motion-reveal";
@@ -9,9 +9,9 @@ import { site } from "@/lib/site-data";
 
 const detailRows = [
   {
-    label: "Contact Person",
-    icon: UserRound,
-    content: "Prince Kumar",
+    label: "Desk / Department",
+    icon: Building2,
+    content: "Technical Sales & Projects",
   },
   {
     label: "Phone",
@@ -31,7 +31,7 @@ const detailRows = [
   {
     label: "Location",
     icon: MapPin,
-    content: "Opposite PNB Bank, Kasna, Greater Noida, G.B. Nagar, UP - 201312",
+    content: "Shop No. -2, First floor, Opposite PNB Bank, Kasna, Greater Noida, G.B. Nagar, UP - 201312",
   },
 ];
 
@@ -45,7 +45,8 @@ export function Contact() {
             Need automation, data or panel work?
           </h2>
           <p className="mt-5 max-w-2xl text-base leading-8 text-muted-foreground">
-            Contact Prince Kumar to discuss your requirement and next steps.
+            Speak directly with our engineering team to review your machine specs, panel
+            requirements, or site visit.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild>

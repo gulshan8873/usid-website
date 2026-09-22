@@ -50,10 +50,8 @@ export const automationBrands = [
   "Omron",
   "Delta",
   "ABB",
-  "Rockwell Automation",
   "Phoenix Contact",
   "Mean Well",
-  "Pepperl+Fuchs",
 ];
 
 export const strengths = [

@@ -289,23 +289,8 @@ footer{border-top:1px solid rgba(255,255,255,.07)}
   .visual-shade{
     background:linear-gradient(180deg,rgba(3,12,22,.42),rgba(3,12,22,.55) 45%,rgba(3,12,22,.94) 100%);
   }
-  .card-top{top:92px;right:12px}
-  .card-bottom{top:176px;right:12px;left:auto;bottom:auto}
-  .floating-card{padding:10px 11px;max-width:calc(100% - 24px)}
-  .hero-project-label{
-    left:12px;
-    right:12px;
-    top:300px;
-    bottom:auto;
-    min-width:0;
-    width:auto;
-    transform:none;
-    gap:7px;
-    padding:9px 11px;
-    flex-direction:column;
-    align-items:flex-start;
-  }
-  .hero-project-label b{font-size:.63rem}
+  /* Decorative hero overlays are hidden on narrow screens so they never cover copy. */
+  .floating-card,.hero-project-label{display:none}
   /* Keep the specification bar in normal document flow on phones. */
   .hero-specbar{
     position:relative;

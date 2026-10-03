@@ -265,39 +265,56 @@ footer{border-top:1px solid rgba(255,255,255,.07)}
   .card-top{right:4%}.card-bottom{right:5%}
 }
 @media(max-width:720px){
-  .hero{
-    min-height:760px;
-    padding-top:125px;
-    padding-bottom:100px;
+  /* Mobile layout: remove desktop overlay assumptions so the header and hero content never collide. */
+  .site-header{
+    position:sticky;
+    top:8px;
+    margin:8px auto 0;
   }
-  .hero-content{min-height:510px}
+  .hero{
+    min-height:0;
+    padding-top:58px;
+    padding-bottom:58px;
+  }
+  .hero-content{
+    min-height:0;
+    padding-bottom:0;
+  }
+  .hero-content .eyebrow{margin-bottom:14px}
+  .hero h1{max-width:100%;line-height:.99}
+  .hero-lead{margin-top:20px}
+  .hero-actions{margin-top:24px}
   .visual-frame:before{inset:9px;border-radius:12px}
   .visual-frame img{filter:saturate(.72) contrast(1.06) brightness(.56)}
   .visual-shade{
     background:linear-gradient(180deg,rgba(3,12,22,.42),rgba(3,12,22,.55) 45%,rgba(3,12,22,.94) 100%);
   }
-  .card-top{top:105px;right:12px}
-  .card-bottom{bottom:175px;right:12px;left:auto}
-  .floating-card{padding:10px 11px}
+  .card-top{top:92px;right:12px}
+  .card-bottom{top:176px;right:12px;left:auto;bottom:auto}
+  .floating-card{padding:10px 11px;max-width:calc(100% - 24px)}
   .hero-project-label{
     left:12px;
     right:12px;
-    bottom:72px;
+    top:300px;
+    bottom:auto;
     min-width:0;
     width:auto;
     transform:none;
-    gap:9px;
-    padding:10px 12px;
+    gap:7px;
+    padding:9px 11px;
     flex-direction:column;
     align-items:flex-start;
   }
-  .hero-project-label b{font-size:.66rem}
+  .hero-project-label b{font-size:.63rem}
+  /* Keep the specification bar in normal document flow on phones. */
   .hero-specbar{
-    left:12px;
-    right:12px;
-    bottom:18px;
-    width:auto;
+    position:relative;
+    left:auto;
+    right:auto;
+    bottom:auto;
     transform:none;
+    width:100%;
+    margin:30px 0 0;
   }
   .brand-rail{padding:19px 12px}
   .brand-set{gap:18px;padding-right:18px}

@@ -2,16 +2,45 @@
 (() => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const glow = document.querySelector('.cursor-glow');
+  const inspector = document.querySelector('.cursor-inspector');
+  let lastTrail = 0;
+  let targetX = window.innerWidth / 2, targetY = window.innerHeight / 2;
+  let inspectorX = targetX, inspectorY = targetY;
   const canvas = document.getElementById('signalCanvas');
   const hero = document.querySelector('.hero');
 
   if (glow && !reduceMotion) {
     window.addEventListener('pointermove', e => {
-      glow.style.left = e.clientX + 'px';
-      glow.style.top = e.clientY + 'px';
+      targetX = e.clientX; targetY = e.clientY;
+      glow.style.left = targetX + 'px';
+      glow.style.top = targetY + 'px';
       glow.style.opacity = '1';
+      if (inspector) inspector.style.opacity = '1';
+      const now = performance.now();
+      if (now - lastTrail > 55 && window.innerWidth > 720) {
+        const dot = document.createElement('span');
+        dot.className = 'cursor-trail';
+        dot.style.left = targetX + 'px';
+        dot.style.top = targetY + 'px';
+        document.body.appendChild(dot);
+        setTimeout(() => dot.remove(), 650);
+        lastTrail = now;
+      }
     }, {passive:true});
-    window.addEventListener('pointerleave', () => glow.style.opacity = '0');
+    window.addEventListener('pointerleave', () => {
+      glow.style.opacity = '0';
+      if (inspector) inspector.style.opacity = '0';
+    });
+    if (inspector && !reduceMotion) {
+      const follow = () => {
+        inspectorX += (targetX - inspectorX) * 0.16;
+        inspectorY += (targetY - inspectorY) * 0.16;
+        inspector.style.left = inspectorX + 'px';
+        inspector.style.top = inspectorY + 'px';
+        requestAnimationFrame(follow);
+      };
+      follow();
+    }
   }
 
   // Lightweight animated signal network behind the hero.

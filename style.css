@@ -77,3 +77,233 @@ footer{display:flex;align-items:center;justify-content:space-between;gap:20px;pa
 @keyframes trailFade{to{transform:scale(.05);opacity:0}}
 @media(max-width:720px){.cursor-inspector{display:none}.hero:after{bottom:5%;opacity:.13}}
 @media(prefers-reduced-motion:reduce){.hero:before,.hero:after,.cursor-inspector span{animation:none}.cursor-trail{display:none}}
+
+/* Reference-inspired immersive industrial showcase */
+.hero{
+  display:block;
+  min-height:790px;
+  padding:150px clamp(18px,5vw,72px) 120px;
+  background:#061321;
+}
+.hero-visual{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  width:100%;
+  max-width:none;
+  pointer-events:none;
+}
+.visual-frame{
+  position:absolute;
+  inset:0;
+  min-height:0;
+  border:0;
+  border-radius:0;
+  transform:none;
+  box-shadow:none;
+  background:#061321;
+}
+.visual-frame:before{
+  inset:14px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:16px;
+}
+.visual-frame:after{right:28px;top:28px}
+.visual-frame img{
+  width:100%;
+  height:100%;
+  min-height:0;
+  object-fit:cover;
+  filter:saturate(.78) contrast(1.08) brightness(.66);
+}
+.visual-shade{
+  background:
+    linear-gradient(90deg,rgba(3,12,22,.84) 0%,rgba(3,12,22,.48) 36%,rgba(3,12,22,.12) 70%,rgba(3,12,22,.25) 100%),
+    linear-gradient(180deg,rgba(3,12,22,.10) 0%,rgba(3,12,22,.10) 55%,rgba(3,12,22,.94) 100%);
+}
+.hero-content{
+  position:relative;
+  z-index:4;
+  width:100%;
+  max-width:none;
+  min-height:520px;
+}
+.hero-content h1{
+  max-width:760px;
+  text-shadow:0 3px 25px rgba(0,0,0,.30);
+}
+.hero-lead{max-width:640px}
+.hero-project-label{
+  position:absolute;
+  left:50%;
+  bottom:34px;
+  transform:translateX(-50%);
+  display:flex;
+  align-items:center;
+  gap:18px;
+  min-width:min(680px,80vw);
+  padding:12px 18px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:12px;
+  background:rgba(9,18,30,.72);
+  box-shadow:0 18px 50px rgba(0,0,0,.30);
+  backdrop-filter:blur(12px);
+  color:#fff;
+  pointer-events:auto;
+}
+.hero-project-label span{
+  color:var(--amber);
+  font:800 .60rem "Space Grotesk",sans-serif;
+  letter-spacing:.11em;
+}
+.hero-project-label b{
+  font-size:.73rem;
+  color:#d5e0e9;
+}
+.hero-caption{display:none}
+.floating-card{
+  pointer-events:auto;
+  background:rgba(15,23,32,.70);
+  border-color:rgba(255,255,255,.18);
+  backdrop-filter:blur(12px);
+}
+.card-top{top:155px;right:7%}
+.card-bottom{bottom:155px;left:auto;right:8%}
+.hero-specbar{
+  position:absolute;
+  left:50%;
+  bottom:-50px;
+  transform:translateX(-50%);
+  z-index:6;
+  width:min(680px,92vw);
+  max-width:none;
+  margin:0;
+  background:rgba(15,23,32,.78);
+  border-color:rgba(255,255,255,.18);
+  box-shadow:0 20px 55px rgba(0,0,0,.30);
+}
+.brand-rail{
+  grid-template-columns:1fr;
+  gap:0;
+  padding:24px clamp(18px,5vw,72px);
+  background:#07111f;
+  border-top:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.brand-intro{display:none}
+.brand-logos{width:100%;mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+.brand-set{gap:30px;padding-right:30px}
+.brand-set a{
+  min-width:160px;
+  height:56px;
+  padding:6px 14px;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  opacity:.72;
+  filter:grayscale(1) brightness(1.5);
+}
+.brand-set a:hover{
+  opacity:1;
+  filter:grayscale(0) brightness(1.15);
+  transform:translateY(-2px);
+  border:0;
+  box-shadow:none;
+}
+.brand-set img{max-width:132px;max-height:38px;height:36px}
+.brand-set span{display:none}
+
+.services,.projects,.about{
+  background:#07111f;
+  color:#fff;
+}
+.services .eyebrow.dark,.projects .eyebrow.dark,.about .eyebrow.dark{color:#8ea6bc}
+.section-heading>p,.tech-heading>p{color:#8ea0b2}
+.section-heading h2,.about h2{color:#fff}
+.service-card{
+  background:linear-gradient(145deg,#0a1827,#0c1d2e);
+  border-color:rgba(148,163,184,.17);
+  color:#fff;
+  box-shadow:none;
+}
+.service-card:hover{
+  border-color:rgba(242,165,26,.38);
+  box-shadow:0 22px 50px rgba(0,0,0,.24);
+}
+.service-card>p{color:#91a4b6}
+.service-list{color:#9aabba}
+.service-icon{background:rgba(111,155,197,.09);color:#9db7ce}
+.service-top .service-number{color:#71879a}
+.service-arrow{color:#7898b5}
+.project-card{
+  background:#0a1827;
+  border-color:rgba(148,163,184,.17);
+  color:#fff;
+  box-shadow:none;
+}
+.project-card:hover{
+  border-color:rgba(242,165,26,.42);
+  box-shadow:0 25px 60px rgba(0,0,0,.28);
+}
+.project-content p{color:#91a4b6}
+.project-specs span{border-color:rgba(148,163,184,.18);color:#9aabba}
+.project-tag{color:#b5c8da}
+.about{background:#081522}
+.experience-panel,.about-point{
+  background:#0b1a29;
+  border-color:rgba(148,163,184,.17);
+  box-shadow:none;
+}
+.experience-panel p,.about-point p{color:#9aabba}
+.experience-panel span{color:#7f95aa}
+.about-point>span{background:rgba(111,155,197,.09);color:#a5bed5}
+footer{border-top:1px solid rgba(255,255,255,.07)}
+
+@media(max-width:1100px){
+  .hero{min-height:760px}
+  .hero-content{min-height:500px}
+  .card-top{right:4%}.card-bottom{right:5%}
+}
+@media(max-width:720px){
+  .hero{
+    min-height:760px;
+    padding-top:125px;
+    padding-bottom:100px;
+  }
+  .hero-content{min-height:510px}
+  .visual-frame:before{inset:9px;border-radius:12px}
+  .visual-frame img{filter:saturate(.72) contrast(1.06) brightness(.56)}
+  .visual-shade{
+    background:linear-gradient(180deg,rgba(3,12,22,.42),rgba(3,12,22,.55) 45%,rgba(3,12,22,.94) 100%);
+  }
+  .card-top{top:105px;right:12px}
+  .card-bottom{bottom:175px;right:12px;left:auto}
+  .floating-card{padding:10px 11px}
+  .hero-project-label{
+    left:12px;
+    right:12px;
+    bottom:72px;
+    min-width:0;
+    width:auto;
+    transform:none;
+    gap:9px;
+    padding:10px 12px;
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .hero-project-label b{font-size:.66rem}
+  .hero-specbar{
+    left:12px;
+    right:12px;
+    bottom:18px;
+    width:auto;
+    transform:none;
+  }
+  .brand-rail{padding:19px 12px}
+  .brand-set{gap:18px;padding-right:18px}
+  .brand-set a{min-width:125px;height:48px}
+  .brand-set img{max-width:108px;max-height:30px;height:29px}
+}
+@media(prefers-reduced-motion:reduce){
+  .brand-track{animation:none}
+}

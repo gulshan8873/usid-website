@@ -61,3 +61,19 @@ footer{display:flex;align-items:center;justify-content:space-between;gap:20px;pa
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}.btn,.service-card,.project-card,.project-image img,.factory-node,.reveal{transition:none}.scan-line,.floating-card,.flow-pulse,.flow-status i{animation:none}.reveal{opacity:1;transform:none}
 }
+/* Live industrial motion layer */
+.hero:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.20;background:repeating-linear-gradient(90deg,transparent 0 78px,rgba(255,255,255,.025) 79px 80px);animation:factoryDrift 18s linear infinite}
+.hero:after{content:"";position:absolute;z-index:0;left:-10%;right:-10%;bottom:8%;height:110px;pointer-events:none;opacity:.20;background:linear-gradient(180deg,transparent,rgba(142,178,210,.05),transparent),repeating-linear-gradient(90deg,transparent 0 110px,rgba(142,178,210,.10) 111px 112px);transform:perspective(300px) rotateX(55deg);transform-origin:center bottom;animation:conveyorSlide 12s linear infinite}
+@keyframes factoryDrift{from{background-position:0 0}to{background-position:160px 0}}
+@keyframes conveyorSlide{from{background-position:0 0}to{background-position:220px 0}}
+.cursor-inspector{position:fixed;z-index:31;width:34px;height:34px;pointer-events:none;opacity:0;transform:translate(-50%,-50%);border:1px solid rgba(242,165,26,.72);border-radius:50%;transition:opacity .2s;width:30px;height:30px}
+.cursor-inspector:before,.cursor-inspector:after{content:"";position:absolute;background:rgba(242,165,26,.72)}
+.cursor-inspector:before{width:44px;height:1px;left:-8px;top:14px}
+.cursor-inspector:after{height:44px;width:1px;left:14px;top:-8px}
+.cursor-inspector span{position:absolute;inset:8px;border-radius:50%;background:var(--amber);box-shadow:0 0 12px rgba(242,165,26,.75);animation:inspectorPulse 1.4s ease-in-out infinite}
+.cursor-inspector i{position:absolute;width:6px;height:6px;right:-5px;bottom:-3px;border-radius:50%;background:#9eb8cf;box-shadow:0 0 8px rgba(158,184,207,.7)}
+@keyframes inspectorPulse{50%{transform:scale(.55);opacity:.6}}
+.cursor-trail{position:fixed;z-index:30;width:5px;height:5px;border-radius:50%;pointer-events:none;background:rgba(242,165,26,.45);box-shadow:0 0 9px rgba(242,165,26,.35);animation:trailFade .65s linear forwards}
+@keyframes trailFade{to{transform:scale(.05);opacity:0}}
+@media(max-width:720px){.cursor-inspector{display:none}.hero:after{bottom:5%;opacity:.13}}
+@media(prefers-reduced-motion:reduce){.hero:before,.hero:after,.cursor-inspector span{animation:none}.cursor-trail{display:none}}
